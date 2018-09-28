@@ -1,0 +1,20 @@
+<div class="title">
+  <h2>나의 하루</h2>
+  <h3>{{ today | date: 'y년 M월 d일'}}</h3> <!-- Pipe 예시 -->
+</div>
+<!-- <div>
+  <input type="checkbox" [checked]="todos[0].done">{{ todos[0]. text }}
+</div>
+<div>
+  <input type="checkbox" [checked]="todos[1].done">{{ todos[1]. text }}
+</div> -->
+<div>
+  <div *ngFor="let todo of todos" (click)="toggleTodo(todo)">
+    <app-todo [todo]="todo"></app-todo>
+  </div>
+</div>
+<!-- {{ todos[0].done }} -->
+<div>
+  <app-add-todo (todoToAdd)="addTodo($event)"></app-add-todo>
+</div>
+{{ todos | json }}
