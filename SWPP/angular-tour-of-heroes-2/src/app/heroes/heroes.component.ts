@@ -33,7 +33,12 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
+      /* Arrow function: [1](parameters) => [3]this.property = [2](parameters)
+        [1] parameters of inner function(subscribe) == result of getHeroes()
+        [2] [1]'s value
+        [3] this is from the outside of inner function */
   }
 
   ngOnInit() {
