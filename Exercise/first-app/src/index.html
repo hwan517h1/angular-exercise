@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FirstApp</title>
+  <base href="/">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- html 파일에서 JavaScript를 쓰기 위해서 <script>가 필요함 -->
+  <!-- Browser에서 ES6를 지원하기 위해서 system.js 필요 -->
+  <script src="https://unpkg.com/systemjs/dist/system.js"></script>
+  <script>
+    SystemJS.config({
+      baseURL: '/src/module',
+      transpiler: 'plugin-babel',
+      map : {
+        'plugin-babel': 'https://unpkg.com/systemjs-plugin-babel/plugin-babel.js',
+        'systemjs-babel-build': 'https://unpkg.com/systemjs-plugin-babel/systemjs-babel-browser.js'
+      }
+    });
+    SystemJS.import('/src/module/main.js');
+  </script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
