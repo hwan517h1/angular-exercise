@@ -13,24 +13,9 @@ import { HeroService } from '../hero.service';
 export class HeroesComponent implements OnInit {
 
   heroes: Hero[];
-  selectedHero: Hero;
 
   // Leave constructor as empty as possible
   constructor(private heroService: HeroService) { }
-
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
-
-  onCheck(event): void {
-    if(event.target.checked) {
-      this.selectedHero.initial = true;
-      console.log('Checked')
-    } else {
-      this.selectedHero.initial = false;
-      console.log('NOT Checked')
-    }
-  }
 
   getHeroes(): void {
     this.heroService.getHeroes()

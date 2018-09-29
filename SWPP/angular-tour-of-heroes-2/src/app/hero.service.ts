@@ -23,4 +23,9 @@ export class HeroService {
       map((heroes: Hero[]) => heroes.map((hero: Hero) => ({...hero, initial: false}))),
     );
   }
+
+  getHero(id: number): Observable<Hero> {
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(HEROES.find(hero => hero.id === id));
+  }
 }
