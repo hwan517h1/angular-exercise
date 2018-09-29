@@ -19,7 +19,7 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes);
+      .then(heroes => this.heroes = heroes);
       /* Arrow function: [1](parameters) => [3]this.property = [2](parameters)
         [1] parameters of inner function(subscribe) == result of getHeroes()
         [2] [1]'s value
@@ -31,4 +31,14 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.addHero({ name } as Partial<Hero>)
+      .then(hero => this.heroes.push(hero));
+  }
+  delete(hero: Hero): void {
+    this.heroService.deleteHero(hero)
+      .then(() => this.heroes = this.heroes.filter(h => h !== hero));
+  }
 }
